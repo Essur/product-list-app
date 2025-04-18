@@ -1,85 +1,85 @@
 {
-    "products": [
-      {
-        "id": 1,
-        "imageUrl": "https://via.placeholder.com/200?text=Apple",
-        "name": "Apple iPhone 13",
-        "count": 50,
-        "size": {
-          "width": 150,
-          "height": 300
-        },
-        "weight": "174g",
-        "comments": [
-          {
-            "id": 1,
-            "productId": 1,
-            "description": "Amazing phone, the camera is superb!",
-            "date": "2025-04-07T15:00:00"
-          },
-          {
-            "id": 2,
-            "productId": 1,
-            "description": "Battery life could be better.",
-            "date": "2025-04-07T16:00:00"
-          },
-          {
-            "id": 3,
-            "productId": 1,
-            "description": "Expensive but worth it!",
-            "date": "2025-04-07T17:00:00"
-          }
-        ]
+  "products": [
+    {
+      "id": 1,
+      "imageUrl": "https://via.placeholder.com/200?text=Apple",
+      "name": "Apple iPhone 13",
+      "count": 50,
+      "size": {
+        "width": 150,
+        "height": 300
       },
-      {
-        "id": 2,
-        "imageUrl": "https://via.placeholder.com/200?text=Macbook",
-        "name": "Apple MacBook Air M1",
-        "count": 30,
-        "size": {
-          "width": 300,
-          "height": 200
+      "weight": "174g",
+      "comments": [
+        {
+          "id": 1,
+          "productId": 1,
+          "description": "Amazing phone, the camera is superb!",
+          "date": "2025-04-07T15:00:00"
         },
-        "weight": "1.29kg",
-        "comments": [
-          {
-            "id": 1,
-            "productId": 2,
-            "description": "Incredible performance, very fast.",
-            "date": "2025-04-06T18:00:00"
-          },
-          {
-            "id": 2,
-            "productId": 2,
-            "description": "Perfect for everyday use, love the battery life.",
-            "date": "2025-04-06T19:30:00"
-          }
-        ]
+        {
+          "id": 2,
+          "productId": 1,
+          "description": "Battery life could be better.",
+          "date": "2025-04-07T16:00:00"
+        },
+        {
+          "id": 3,
+          "productId": 1,
+          "description": "Expensive but worth it!",
+          "date": "2025-04-07T17:00:00"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "imageUrl": "https://via.placeholder.com/200?text=Macbook",
+      "name": "Apple MacBook Air M1",
+      "count": 30,
+      "size": {
+        "width": 300,
+        "height": 200
       },
-      {
-        "id": 3,
-        "imageUrl": "https://via.placeholder.com/200?text=Samsung",
-        "name": "Samsung Galaxy S21",
-        "count": 45,
-        "size": {
-          "width": 160,
-          "height": 300
+      "weight": "1.29kg",
+      "comments": [
+        {
+          "id": 1,
+          "productId": 2,
+          "description": "Incredible performance, very fast.",
+          "date": "2025-04-06T18:00:00"
         },
-        "weight": "169g",
-        "comments": [
-          {
-            "id": 1,
-            "productId": 3,
-            "description": "Great display, but the camera could be better.",
-            "date": "2025-04-05T14:30:00"
-          },
-          {
-            "id": 2,
-            "productId": 3,
-            "description": "The battery lasts all day, very good!",
-            "date": "2025-04-05T15:30:00"
-          }
-        ]
-      }
-    ]
-  }  
+        {
+          "id": 2,
+          "productId": 2,
+          "description": "Perfect for everyday use, love the battery life.",
+          "date": "2025-04-06T19:30:00"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "imageUrl": "https://via.placeholder.com/200?text=Samsung",
+      "name": "Samsung Galaxy S21",
+      "count": 45,
+      "size": {
+        "width": 160,
+        "height": 300
+      },
+      "weight": "169g",
+      "comments": [
+        {
+          "id": 1,
+          "productId": 3,
+          "description": "Great display, but the camera could be better.",
+          "date": "2025-04-05T14:30:00"
+        },
+        {
+          "id": 2,
+          "productId": 3,
+          "description": "The battery lasts all day, very good!",
+          "date": "2025-04-05T15:30:00"
+        }
+      ]
+    }
+  ]
+}

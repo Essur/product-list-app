@@ -29,7 +29,7 @@ const ProductDetail: React.FC = () => {
     };
 
     const handleAddComment = async (comment: { description: string; date: string }) => {
-        dispatch(addComment({ productId: product.id, comment: newComment.data }));
+        dispatch(addComment({ productId: product.id, comment: comment }));
     };
 
     const handleDeleteComment = async (commentId: number) => {

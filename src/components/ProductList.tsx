@@ -66,12 +66,7 @@ const ProductList: React.FC = () => {
 
     const confirmDelete = async () => {
         if (productToDelete) {
-            try {
-                await productsApi.deleteProductById(productToDelete.id);
-                dispatch(deleteProduct(productToDelete.id));
-            } catch (error) {
-                console.error('Failed to delete product', error);
-            }
+            dispatch(deleteProduct(productToDelete.id));
         }
         setShowDeleteModal(false);
         setProductToDelete(null);
