@@ -57,7 +57,7 @@
       ]
     },
     {
-      "name": "Samsung Galaxy S33",
+      "name": "Samsung Galaxy Sa",
       "count": 45,
       "weight": "169g",
       "imageUrl": "https://via.placeholder.com/200?text=Samsung",
@@ -77,6 +77,11 @@
           "productId": "2",
           "description": "Perfect for everyday use, love the battery life.",
           "date": "2025-04-06T19:30:00"
+        },
+        {
+          "productId": "3",
+          "description": "asd",
+          "date": "4/18/2025, 11:01:11 PM"
         }
       ],
       "id": "3"

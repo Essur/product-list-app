@@ -29,7 +29,7 @@ const ProductDetail: React.FC = () => {
         setIsModalOpen(true);
     };
 
-    const handleAddComment = async (comment: { productId: string, description: string, date: string }) => {
+    const handleAddComment = async (comment: { id: string, productId: string, description: string, date: string }) => {
         try {
             const addedComment = await productsApi.addCommentToProduct(comment.productId, comment);
             dispatch(addComment({ productId: comment.productId, comment: addedComment }));

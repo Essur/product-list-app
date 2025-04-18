@@ -14,8 +14,24 @@ export const updateProduct = (id: string, product: Product) =>
 export const deleteProductById = (id: string) =>
   axios.delete(`${BASE_URL}/${id}`);
 
-export const addCommentToProduct = (productId: string, newComment: { productId: string, description: string, date: string }) =>
-  axios.post(`${BASE_URL}/${productId}/comments`, newComment);
+export const addCommentToProduct = async (productId: string, comment: { id: string, productId: string, description: string, date: string }) => {
+  const productRes = await axios.get(`${BASE_URL}/${productId}`);
+  const product = productRes.data;
+  const updatedComments = [...(product.comments || []), comment];
+  await axios.patch(`${BASE_URL}/${productId}`, {
+    comments: updatedComments,
+  });
 
-export const deleteCommentFromProduct = (productId: string, commentId: string) =>
-  axios.delete(`${BASE_URL}/${productId}/comments/${commentId}`);
+  return comment;
+}
+
+export const deleteCommentFromProduct = async (productId: string, commentId: string) => {
+  const productRes = await axios.get(`${BASE_URL}/${productId}`);
+  const product = productRes.data;
+
+  const updatedComments = (product.comments || []).filter(
+    (comment: { id: string }) => comment.id !== commentId
+  );
+
+  return axios.patch(`${BASE_URL}/${productId}`, { comments: updatedComments });
+}
