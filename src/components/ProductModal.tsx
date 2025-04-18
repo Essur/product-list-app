@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { addProduct, deleteProduct, updateProduct } from '../store/productsSlice';
 import "../styles/Modal.css";
 import { Product } from '../types';
+import * as productsApi from "../api/productsApi";
 
 interface ProductModalProps {
   isOpen: boolean;
@@ -14,7 +15,9 @@ interface ProductModalProps {
 const ProductModal: React.FC<ProductModalProps> = ({ isOpen, onClose, product }) => {
   const [name, setName] = useState('');
   const [count, setCount] = useState(0);
+  const [width, setWidth] = useState(0);
   const [weight, setWeight] = useState('');
+  const [height, setHeight] = useState(0);
   const [imageUrl, setImageUrl] = useState('');
   const dispatch = useDispatch();
 
@@ -24,6 +27,8 @@ const ProductModal: React.FC<ProductModalProps> = ({ isOpen, onClose, product })
       setCount(product.count);
       setWeight(product.weight);
       setImageUrl(product.imageUrl);
+      setWidth(product.size.width); 
+      setHeight(product.size.height);
     }
   }, [product]);
 
@@ -33,19 +38,23 @@ const ProductModal: React.FC<ProductModalProps> = ({ isOpen, onClose, product })
       return;
     }
     const newProduct: Product = {
-      id: product ? product.id : Date.now(),
       name,
       count,
       weight,
       imageUrl,
-      size: { width: 100, height: 100 },
-      comments: [],
+      size: { 
+        width: width,
+        height: height
+      },
+      comments: product ? product.comments : [],
     };
     try {
       if (product) {
-        dispatch(updateProduct(newProduct));
+        await productsApi.updateProduct(product.id, newProduct);
+        dispatch(updateProduct({ ...newProduct, id: product.id }));
       } else {
-        dispatch(addProduct(newProduct));
+        const createdProduct = await productsApi.addProduct(newProduct);
+        dispatch(addProduct(createdProduct.data));
       }
       onClose();
     } catch (error) {
@@ -80,6 +89,15 @@ const ProductModal: React.FC<ProductModalProps> = ({ isOpen, onClose, product })
         <div className="form-group">
           <label>Weight</label>
           <input type="text" value={weight} onChange={(e) => setWeight(e.target.value)} />
+        </div>
+        <div className="form-group">
+          <label>Height</label>
+          <input type="number" value={height} onChange={(e) => setHeight(Number(e.target.value))} />
+        </div>
+
+        <div className="form-group">
+          <label>Width</label>
+          <input type="number" value={width} onChange={(e) => setWidth(Number(e.target.value))} />
         </div>
 
         <div className="form-group">

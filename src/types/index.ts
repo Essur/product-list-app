@@ -1,6 +1,6 @@
 // src/types/index.ts
 export interface Product {
-    id: number;
+    id: string;
     imageUrl: string;
     name: string;
     count: number;
@@ -10,8 +10,8 @@ export interface Product {
   }
   
   export interface Comment {
-    id: number;
-    productId: number;
+    id: string;
+    productId: string;
     description: string;
     date: string;
   }  

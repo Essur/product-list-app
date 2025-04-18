@@ -7,6 +7,7 @@ import { RootState } from '../store/store';
 import "../styles/ProductDetail.css";
 import CommentModal from './CommentModal';
 import ProductModal from './ProductModal';
+import * as productsApi from "../api/productsApi";
 
 const ProductDetail: React.FC = () => {
     const { id } = useParams();
@@ -28,12 +29,22 @@ const ProductDetail: React.FC = () => {
         setIsModalOpen(true);
     };
 
-    const handleAddComment = async (comment: { description: string; date: string }) => {
-        dispatch(addComment({ productId: product.id, comment: comment }));
+    const handleAddComment = async (comment: { productId: string, description: string, date: string }) => {
+        try {
+            const addedComment = await productsApi.addCommentToProduct(comment.productId, comment);
+            dispatch(addComment({ productId: comment.productId, comment: addedComment }));
+        } catch (error) {
+            console.error('Error adding comment:', error);
+        }
     };
 
-    const handleDeleteComment = async (commentId: number) => {
-        dispatch(deleteComment({ productId: product.id, commentId }));
+    const handleDeleteComment = async (commentId: string) => {
+        try {
+            await productsApi.deleteCommentFromProduct(product.id, commentId);
+            dispatch(deleteComment({ productId: product.id, commentId }));
+        } catch (error) {
+            console.error('Error deleting comment:', error);
+        }
     };
 
     if (!product) return <div>Loading...</div>;

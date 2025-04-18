@@ -4,8 +4,8 @@ import "../styles/Modal.css";
 
 interface CommentModalProps {
     isOpen: boolean;
-    productId: number;
-    onAdd: (comment: { productId: number, description: string, date: string}) => void;
+    productId: string;
+    onAdd: (comment: { productId: string, description: string, date: string}) => void;
     onClose: () => void;
 }
 
