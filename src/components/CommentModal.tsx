@@ -1,11 +1,12 @@
 // src/components/CommentModal.tsx
 import React, { useState } from 'react';
 import "../styles/Modal.css";
+import { v4 as uuidv4 } from 'uuid';
 
 interface CommentModalProps {
     isOpen: boolean;
-    productId: number;
-    onAdd: (comment: { productId: number, description: string, date: string}) => void;
+    productId: string;
+    onAdd: (comment: { id: string, productId: string, description: string, date: string}) => void;
     onClose: () => void;
 }
 
@@ -15,6 +16,7 @@ const CommentModal: React.FC<CommentModalProps> = ({ isOpen, productId, onAdd, o
     const handleAdd = () => {
         if (!description.trim()) return;
         onAdd({
+            id: uuidv4(),
             productId,
             description,
             date: new Date().toLocaleString(),

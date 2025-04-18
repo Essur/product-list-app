@@ -1,6 +1,6 @@
 // src/store/productsSlice.ts
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Product } from '../types';
+import { Product, Comment } from '../types';
 
 interface ProductsState {
   products: Product[];
@@ -17,7 +17,7 @@ const productsSlice = createSlice({
     addProduct(state, action: PayloadAction<Product>) {
       state.products.push(action.payload);
     },
-    deleteProduct(state, action: PayloadAction<number>) {
+    deleteProduct(state, action: PayloadAction<string>) {
       state.products = state.products.filter((product) => product.id !== action.payload);
     },
     setProducts(state, action: PayloadAction<Product[]>) {
@@ -29,14 +29,14 @@ const productsSlice = createSlice({
         state.products[index] = action.payload;
       }
     },
-    addComment: (state, action: PayloadAction<{ productId: number; comment: Comment }>) => {
+    addComment: (state, action: PayloadAction<{ productId: string; comment: Comment }>) => {
       const { productId, comment } = action.payload;
       const product = state.products.find(p => p.id === productId);
       if (product) {
         product.comments.push(comment);
       }
     },
-    deleteComment: (state, action: PayloadAction<{ productId: number; commentId: number }>) => {
+    deleteComment: (state, action: PayloadAction<{ productId: string; commentId: string }>) => {
       const { productId, commentId } = action.payload;
       const product = state.products.find(p => p.id === productId);
       if (product) {
